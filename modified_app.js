@@ -19,7 +19,7 @@ exports.deterministicPartitionKey = (event) => {
     
     
     // We set the candidate depending upon the condion of given partition key
-    if (partitionKey && partitionKey.length > MAX_PARTITION_KEY_LENGTH )
+    if (partitionKey && partitionKey.length <= MAX_PARTITION_KEY_LENGTH )
         candidate = partitionKey;
     else if (partitionKey && partitionKey.length > MAX_PARTITION_KEY_LENGTH )
         candidate = crypto.createHash("sha3-512").update(partitionKey).digest("hex");
